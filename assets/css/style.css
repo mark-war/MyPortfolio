@@ -93,6 +93,16 @@ a:hover {
   background-position: center center;
 }
 
+.brand {
+  font-size: 25px;
+  font-stretch: condensed;
+}
+
+.chek {
+  color: #66B6D3;
+  font-size: 25px;
+}
+
 @media (max-width: 1024px) {
   .bg-image {
     background-attachment: scroll;
@@ -1080,6 +1090,15 @@ a:hover {
   font-size: 1.4rem;
 }
 
+.testimonial-box .designation {
+  color: #fff;
+  font-weight: 300;
+  margin-top: -20px;
+  margin-bottom: 1rem;
+  display: block;
+  font-size: 1rem;
+}
+
 .testimonial-box .comit {
   font-size: 2rem;
   color: #0078ff;
@@ -1280,7 +1299,10 @@ a:hover {
 
 .card-blog .post-date {
   color: #4e4e4e;
-  display: inline-block;
+  display: inline-block;  
+}
+
+.post-date {
   float: right;
 }
 

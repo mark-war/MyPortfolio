@@ -234,3 +234,48 @@
   new PureCounter();
 
 })()
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  const errorMessage = document.querySelector(".error-message");
+  const successMessage = document.querySelector(".sent-message");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch("http://localhost:3000/send-email", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Clear the error message if there is no error
+          errorMessage.style.display = "none";
+          return response.text();
+        } else {
+          // Display the error message if there is an error
+          throw new Error("Network response was not ok.");
+        }
+      })
+      .then((data) => {
+        console.log(data); // Log the response from the server
+
+        // Display the success message
+        successMessage.style.display = "block";
+        successMessage.innerHTML = data;
+        
+        // Reset the form
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+        
+        // Display the error message
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML = "There was an error sending your message.";
+      });
+  });
+});
